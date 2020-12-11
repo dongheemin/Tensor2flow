@@ -58,7 +58,7 @@ for i in range (0, 10):
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
-# Visualization Normalization Dataset[0-9]
+# Visualization Normalization Dataset[0-24]
 plt.figure(figsize=(5,5))
 for i in range(25):
 	plt.subplot(5,5,i+1)
@@ -68,3 +68,5 @@ for i in range(25):
 	plt.imshow(train_images[i], cmap=plt.cm.binary)
 	plt.xlabel(class_names[train_labels[i]])
 plt.savefig('./images/NorFig.png', dpi=150)
+
+# Model Making
