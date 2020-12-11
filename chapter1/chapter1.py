@@ -48,10 +48,10 @@ test_labels
 
 # Visualization Dataset[0-9]
 for i in range (0, 10):
-	plt.figure(figsize=(1,1))
+	plt.figure(figsize=(0.3,0.3))
 	plt.imshow(train_images[i])
 	plt.colorbar()
 	plt.grid(False)
-	plt.savefig('./images/fig'+str(i)+'.png', dpi=300)
+	plt.savefig('./images/fig'+str(i)+'.png')
 
 
