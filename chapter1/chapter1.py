@@ -46,10 +46,14 @@ test_labels
 #		10000
 #		test
 
-for i in range (0, 9):
-	plt.figure()
-	plt.imshow(train_images[i])
-	plt.colorbar()
-	plt.grid(False)
-	plt.savefig('./images/fig'+str(i)+'.png', dpi=300)
+# Visualization Dataset[0-9]
+try:
+	for i in range (0, 10):
+		plt.figure(figsize=(28,28))
+		plt.imshow(train_images[i])
+		plt.colorbar()
+		plt.grid(False)
+		plt.savefig('./images/fig'+str(i)+'.png', dpi=300)
+except Exception as e :
+	print(e)
 
