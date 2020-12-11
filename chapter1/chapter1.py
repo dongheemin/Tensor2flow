@@ -48,7 +48,7 @@ test_labels
 
 # Visualization Dataset[0-9]
 for i in range (0, 10):
-	plt.figure(figsize=(10,10))
+	plt.figure(figsize=(5,5))
 	plt.imshow(train_images[i])
 	plt.colorbar()
 	plt.grid(False)
