@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 #2. Load Dataset by Fasion MNIST
 fashion_mnist = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
-class_name = ['T-shrit/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shrit', 'Sneaker',
+class_names = ['T-shrit/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shrit', 'Sneaker',
 		 'Bag', 'Ankle boot']
 
 #2-1. Label - Class
@@ -54,4 +54,17 @@ for i in range (0, 10):
 	plt.grid(False)
 	plt.savefig('./images/fig'+str(i)+'.png', dpi=150)
 
+# Noramlization Dataset
+train_images = train_images / 255.0
+test_images = test_images / 255.0
 
+# Visualization Normalization Dataset[0-9]
+plt.figure(figsize=(5,5))
+for i in range(25):
+	plt.subplot(5,5,i+1)
+	plt.xticks([])
+	plt.yticks([])
+	plt.grid(False)
+	plt.imshow(train_images[i], cmap=plt.cm.binary)
+	plt.xlabel(class_names[train_labels[i]])
+plt.savefig('./images/NorFig.png', dpi=150)
