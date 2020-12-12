@@ -5,6 +5,7 @@ from tensorflow import keras
 
 import numpy as np
 import matplotlib.pyplot as plt
+import pltgraph as pg
 
 #1. Version Check
 #tf.__version__
@@ -70,3 +71,33 @@ for i in range(25):
 plt.savefig('./images/NorFig.png', dpi=150)
 
 # Model Making
+model = keras.Sequential([
+	keras.layers.Flatten(input_shape=(28,28)),
+	keras.layers.Dense(128, activation='relu'),
+	keras.layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+		loss='sparse_categorical_crossentropy',
+		metrics=['accuracy'])
+
+model.fit(train_images, train_labels, epochs=5)
+
+# Model evaluation
+
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+print('\n데이터 정확도:', test_acc)
+
+# Make Prediction
+predictions = model.predict(test_images)
+
+print('예측값 :',np.argmax(predictions[0]))
+print('실제값 :',test_labels[0])
+
+i = 0
+plt.figure(figsize=(6,3))
+plt.subplot(1,2,1)
+plt = pg.plot_image(plt, i, predictions, test_labels, test_images, class_names)
+plt.subplot(1,2,2)
+plt = pg.plot_value_array(plt, i, predictions, test_labels)
+plt.savefig('./images/PredFig.png', dpi=150)
